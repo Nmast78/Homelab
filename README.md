@@ -11,3 +11,4 @@ This is the repository I developed during summer 2025. The homelab consists of t
 
 As you can see, it does not consist of much hardware😂. However, you might be suprised how much you can do and learn on such limited hardware.
 
+![Homelab Image](./Nicks_Physical_Homelab_Picture.png)
