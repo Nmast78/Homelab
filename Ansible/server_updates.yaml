@@ -1,0 +1,34 @@
+- name: Update Compute Nodes
+  hosts: myhosts
+  become: yes
+
+  tasks:
+    - name: Update apt package cache
+      apt:
+        update_cache: yes
+      register: apt_update_result
+
+    - name: Upgrade all packages
+      apt:
+        upgrade: yes
+      register: apt_upgrade_result
+
+    - name: Display update results
+      debug:
+        msg: "Package cache updated successfully"
+      when: apt_update_result.changed
+      
+    - name: Display upgrade results
+      debug:
+        msg: "{{ apt_upgrade_result.stdout_lines | default([]) }}"
+      when: apt_upgrade_result.changed
+
+    - name: Check if reboot is required
+      stat:
+        path: /var/run/reboot-required
+      register: reboot_required
+
+    - name: Display reboot requirement
+      debug:
+        msg: "Reboot is required to complete the upgrade"
+      when: reboot_required.stat.exists
