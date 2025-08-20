@@ -1,1 +1,21 @@
+ad hoc
 
+Reboot = absible myServer -a "/sbin/reboot"
+
+Transfer a File = ansible atlanta -m ansible.builtin.copy -a "src=/etc/hosts dest=/tmp/hosts"
+
+Check if a Package is Installed = ansible webservers -m ansible.builtin.yum -a "name=acme state=present"
+
+Pass sudo password in order to run updates = ansible-playbook server_updates.yaml -i inventory.ini --ask-become-passThen run this 3 times and provide password of all 3 nodes one at a time.
+
+
+Common Command Line Tools:
+ansible
+ansilbe-config
+ansible-console
+ansilbe-doc
+ansible-galaxy
+ansible-inventory
+ansible-playbook
+ansible-pull
+ansible-vault
